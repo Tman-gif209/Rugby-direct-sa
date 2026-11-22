@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Rugby Direct SA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body {
+            background:
+                linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)),
+                url("{% static 'images/blacknwhite.jpg' %}");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-card {
+            background: white;
+            width: 100%;
+            max-width: 550px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.3);
+        }
+
+        .logo {
+            width: 120px;
+            display: block;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: gray;
+            margin-bottom: 25px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="register-card">
+
+    <img src="{% static 'images/rugbylogo.png' %}"
+         class="logo"
+         alt="Rugby Direct SA">
+
+    <h2 class="title">
+        Rugby Direct SA
+    </h2>
+
+    <p class="subtitle">
+        Create your account
+    </p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">
+                Username
+            </label>
+            {{ form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">
+                Password
+            </label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">
+                Confirm Password
+            </label>
+            {{ form.password2 }}
+        </div>
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        <button type="submit"
+                class="btn btn-danger w-100">
+            Create Account
+        </button>
+
+    </form>
+
+    <hr>
+
+    <div class="text-center">
+
+        Already have an account?
+
+        <a href="{% url 'login' %}">
+            Login Here
+        </a>
+
+    </div>
+
+    <div class="text-center mt-3">
+
+        <a href="{% url 'home' %}"
+           class="btn btn-outline-dark">
+
+            Back Home
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

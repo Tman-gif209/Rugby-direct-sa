@@ -1,0 +1,156 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Rugby Direct SA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        body{
+            background:
+                linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)),
+                url("{% static 'images/hero-rugby.jpg' %}");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-card{
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.3);
+        }
+
+        .logo{
+            width: 120px;
+            display: block;
+            margin: auto;
+        }
+
+        .title{
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .subtitle{
+            text-align: center;
+            color: gray;
+            margin-bottom: 25px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <img src="{% static 'images/rugbylogo.png' %}"
+         class="logo"
+         alt="Rugby Direct SA">
+
+    <h2 class="title">
+        Rugby Direct SA
+    </h2>
+
+    <p class="subtitle">
+        Login to continue shopping
+    </p>
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            Invalid Username or Password.
+        </div>
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Username
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                class="form-control"
+                placeholder="Enter username"
+                required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Password
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Enter password"
+                required>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-danger w-100">
+
+            Login
+
+        </button>
+
+    </form>
+
+    <hr>
+
+    <div class="text-center">
+
+        Don't have an account?
+
+        <a href="{% url 'register' %}">
+            Register Here
+        </a>
+
+    </div>
+
+    <div class="text-center mt-3">
+
+        <a href="{% url 'login' %}"
+           class="btn btn-outline-dark">
+
+            Back 
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

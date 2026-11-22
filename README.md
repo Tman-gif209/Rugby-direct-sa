@@ -1,15 +1,2 @@
-# Django website
-
-# Dependencies
-# Before downloading make sure that you have python, django and sphinx installed.
-# You can use any laptop/ computer.
-# Have a git account
-
-# Installation
-# Copy the "code" of the repository.
-# make sure you have opened a terminal with the correct directory path
-# type git clone and paste the "code" in the terminal and then press enter.
-
-# Requirements.txt
-# to add your own requirements.txt file you should go to a terminal, have your specified directory path ready and type "pip freeze. Then after your press enter type pip install -r requirements.txt.
-
+# Rugby-direct-sa
+Rugby Direct SA is a Django-based e-commerce web application developed as a capstone project. The platform allows users to register, browse rugby products, search and filter items, manage a shopping cart with quantity updates, and proceed through a checkout process. Built using Python, Django, Bootstrap, HTML, CSS, and JavaScript.
